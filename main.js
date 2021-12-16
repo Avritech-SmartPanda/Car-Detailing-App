@@ -1945,7 +1945,6 @@ function generateModelList(make) {
   let models = filtered.map(v => v.model);
   // resetting model options:
   removeOptions(modelsList);
-  console.log(models);
   models.forEach(item => {
     var opt = document.createElement("option");
     opt.text = capitalizeFirstLetter(item);
@@ -1960,13 +1959,11 @@ function capitalizeFirstLetter(string) {
 function getProfileImg() {
   let email = JSON.parse(localStorage.getItem('email'));
   Xter = email.charAt(0).toUpperCase()
-  const pic = document.createElement('profilePic');
+  const pic = document.getElementById('profilePic');
   pic.innerHTML = ` 
-  <div class="z-10 sticky top-0 -mt-px px-6 py-1 md:px-8 border-t border-b font-medium uppercase text-secondary bg-gray-50 dark:bg-gray-900">
-  ${Xter}
-</div>
-  
-  `
+  <div class="flex items-center justify-center w-12 h-12 rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200                  z-10  sticky top-0 -mt-px">
+   ${Xter}
+</div> `
 }
 
 

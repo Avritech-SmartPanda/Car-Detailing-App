@@ -33,9 +33,9 @@
         <div class="input-area">
           <input type="text" placeholder="Username" id="username" name="username" required minlength="3"
             class="focus:border-dark-900 focus:ring-1 focus:ring-dark-900 focus:outline-none focus:border-none w-full text-sm text-black placeholder-gray-400 border border-gray-200 rounded-md py-2 pl-10">
-          <i class="icon fafa-user"></i>
-          <i class="error error-icon hidden fafa-exclamation-circle" id="usernameIcon"></i>
-          <i class="valid-icon  hidden fafa-check" id="validName"></i>
+          <i class="icon fa fa-user"></i>
+          <i class="error error-icon hidden fa fa-exclamation-circle" id="usernameIcon"></i>
+          <i class="valid-icon  hidden fa fa-check" id="validName"></i>
         </div>
         <div id="nameErrors"></div>
 
@@ -47,9 +47,9 @@
         <div class="input-area">
           <input type="password" placeholder="Password" id="psw" name="psw" required minlength="4"
             class="focus:border-dark-900 focus:ring-1 focus:ring-dark-900 focus:outline-none focus:border-none  w-full text-sm text-black placeholder-gray-400 border border-gray-200 rounded-md py-2 pl-10">
-          <i class="icon fafa-lock"></i>
-          <i class="error error-icon hidden fafa-exclamation-circle" id="pswIcon"></i>
-          <i class="valid-icon  hidden fafa-check" id="validPsw"></i>
+          <i class="icon fa fa-lock"></i>
+          <i class="error error-icon hidden fa fa-exclamation-circle" id="pswIcon"></i>
+          <i class="valid-icon  hidden fa fa-check" id="validPsw"></i>
         </div>
       </div>
 
@@ -62,14 +62,17 @@
         <p id="hasMinlength" class="invalid">Minimum <b>4 characters</b></p>
       </div>
       <div class="formField">
-        <div id="loginErrors"></div>      
+        <div id="loginErrors"></div>
       </div>
 
       <div class="pass-txt"><a href="#">Forgot password?</a></div>
       <input type="submit" value="Login">
     </form>
+
     <div class="sign-txt">Don't have an account? <a href="./sign-up.html">Sign up</a></div>
   </div>
+
+
 
   <!-- <script src="js/app.js" type="module"></script>  -->
   <script src="./js/auth.js"></script>

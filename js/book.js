@@ -157,9 +157,7 @@ const renderPackages = () => {
   </label>
     `;
     packagesDiv.appendChild(package);
-  })
-
-
+  });
 
 }
 
@@ -213,69 +211,4 @@ bookingForm.addEventListener('submit', function () {
   localStorage.setItem('cars', JSON.stringify(cars));
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function filterData(searchTerm) {
-// 	listItems.forEach(item => {
-// 		if(item.innerHTML.toLowerCase().includes(searchTerm.toLowerCase())) {
-// 			item.classList.remove('hidden');
-// 		} else {
-// 			item.classList.add('hidden');
-// 		}
-// 	});
-// }
-
-
-
-// // SOCIAL PANEL JS
-// const floating_btn = document.querySelector('.floating-btn');
-// const close_btn = document.querySelector('.close-btn');
-// const social_panel_container = document.querySelector('.social-panel-container');
-
-// floating_btn.addEventListener('click', () => {
-// 	social_panel_container.classList.toggle('visible')
-// });
-
-// close_btn.addEventListener('click', () => {
-// 	social_panel_container.classList.remove('visible')
-// });
-
-
 
