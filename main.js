@@ -1961,7 +1961,7 @@ function getProfileImg() {
   Xter = email.charAt(0).toUpperCase()
   const pic = document.getElementById('profilePic');
   pic.innerHTML = ` 
-  <div class="flex items-center justify-center w-12 h-12 rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200                  z-10  sticky top-0 -mt-px">
+  <div class="flex items-center justify-center w-12 h-12 rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200 z-10  sticky top-0 -mt-px">
    ${Xter}
 </div> `
 }
@@ -2045,42 +2045,68 @@ function displayMyCarList(list) {
   vehiclesList.innerHTML = '';
   if (list.length > 0) {
     list.forEach(car => {
+       
       const item = document.createElement('li');
-      item.innerHTML = ` 
-      <div
-      class="h-64  bg-white  group block rounded-lg p-4 border border-gray-200">
-
-
-      
-      <div class="flex flex-col justify-center">      
-        <div class="flex-auto pb-6 px-6">
-          <div class="flex flex-col">
-            <div class="flex  justify-center text-sm font-semibold">
-            ${capitalizeFirstLetter(car.brand)} 
-            </div>
-            <div class="flex  justify-center text-sm font-medium">
-           ${capitalizeFirstLetter(car.model)}
-            </div>
-            <div class="flex flex-auto justify-center my-3">
-            <img src="./images/${car.type}.png" class="w-28" />
+      item.innerHTML = `      
+    <div class="h-64  bg-white  group block rounded-lg p-4 border border-gray-200">
+    <div class="flex flex-col justify-center">
+      <div class="flex-auto pb-6  relative">
+        <button onclick="removeVehicle(${car.id})"
+          class="flex-none flex absolute -top-2 right-0  items-center justify-center w-9 h-9 rounded-full text-gray-500  hover:text-red-500 "
+          type="button">
+          <i class="fa fa-trash fa-xs"></i>
+        </button>
+        <div class="flex flex-col">
+          <div class="flex  justify-center text-sm font-semibold">
+            ${capitalizeFirstLetter(car.brand)} - ${capitalizeFirstLetter(car.model)}
           </div>
-            <div  class="w-full flex justify-center  text-sm font-medium   text-gray-500 my-3">
-              ${capitalizeFirstLetter(car.color)} - ${capitalizeFirstLetter(car.plate)}             
-            </div>            
+          <div class="flex flex-auto justify-center my-3">
+            <img src="./images/${car.type}.png" class="w-16" />
           </div>
-    
-          <div class="flex relative space-x-3 justify-center mt-4 text-sm font-medium">        
-            <button onclick="removeVehicle(${car.id})"
-              class="absolute top-0 flex-none flex items-center justify-center w-9 h-9 rounded-full text-red-500 border bg-red-50 hover:bg-red-500  hover:text-white "
-              type="button">
-              <i class="fas fa-trash"></i>
-            </button>            
+          <div class="w-full flex justify-center  text-xs font-medium text-gray-500 my-1">
+            ${capitalizeFirstLetter(car.color)} - ${capitalizeFirstLetter(car.plate)}
           </div>
         </div>
+        <div class="flex relative justify-start mt-2 text-sm font-medium" id="${car.model}${car.type}"></div>
       </div>
-    </div>      
+    </div>
+  </div>
       `;
       vehiclesList.appendChild(item);
+
+      if (car.detailer) {
+        const booked = document.getElementById(car.model + car.type);
+        booked.innerHTML =`
+        <div class="flex flex-col mt-1 border-t pt-4 ">  
+        
+        <div class="flex items-center font-thin text-gray-400">
+          <i class="fa fa-map-marker mr-3 "></i>
+          <span class="text-xs line-clamp-1 ">
+          ${car.appointmentAddress}
+          </span>
+        </div>
+        <div class="flex items-center font-thin text-gray-400 mt-3">
+          <i class="fa fa-calendar-check mr-3 "></i>
+          <span class="text-xs">${car.appointmentDate}     ${car.appointmentTime}</span>
+        </div>
+
+        <div class="flex items-center font-thin text-gray-400 mt-3">
+         <i class="fa fa-clock mr-3 "></i>
+          <span class="text-xs">45 mins  </span>
+        </div>
+        <div class="flex items-center font-thin text-gray-400 mt-3">
+          <i class="fa fa-university mr-3 "></i>
+          <span class="text-xs">${car.detailer}</span>
+        </div>
+      </div>
+        `
+      }
+
+
+
+
+
+
     })
   } else {
     var noDataDiv = document.getElementById('NoData');

@@ -209,6 +209,6 @@ bookingForm.addEventListener('submit', function () {
   //Log object to console again.
   localStorage.setItem('cars', JSON.stringify([]));
   localStorage.setItem('cars', JSON.stringify(cars));
-
+  goTo();
 })
 
