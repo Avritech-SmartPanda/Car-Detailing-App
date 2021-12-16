@@ -1867,13 +1867,42 @@ const vehicles = [
   }
 ]
 const types = ['cabriolet', 'campervan', 'coupe', 'hatchback', 'micro', 'minitruck', 'minivan', 'musclecar', 'pickup', 'roadster', 'sedan', 'supercar', 'suv', 'truck', 'van'];
-
-
 window.addEventListener('load', () => {
   showCarTypes();
   displayMyCarList(cars);
+  getProfileImg();
 });
 
+
+const renderPlans = () => {
+  plans.forEach(item => {
+    const package = document.createElement('div');
+    package.classList.add('relative', 'w-56');
+    package.innerHTML = ` 
+  <input type="radio" name="packages" value="${item.name}" class="sr-only peer" id="${item.name}">
+  <label for="${item.name}"
+    class="h-64 hover:border-transparent hover:shadow-lg group block rounded-lg border border-gray-200 peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500    group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium  hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+    <div class="min-h-full flex items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8 text-center">
+      <div>
+      <h4 class=" h-12 w-auto text-4xl " > ${item.price}</h4>
+        <p class="mt-6 text-center text-sm font-extrabold uppercase">
+        ${item.name}
+        </p>
+        <p class="mt-4 text-center text-xs">  
+          ${item.description}
+        </p>
+
+        <p><small> ${item.time}</small></p>
+      </div>        
+    </div>
+  </div>
+    <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+  </label>
+    `;
+    packagesDiv.appendChild(package);
+  })
+}
 
 const showCarTypes = () => {
   types.forEach(carType => {
@@ -1892,16 +1921,11 @@ const showCarTypes = () => {
         ${carType}
       </div>
     </div>
-
-
     <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
   </label>
     `;
     typesDiv.appendChild(item);
   })
-
-
-
 }
 
 function generateBrandsList() {
@@ -1933,6 +1957,19 @@ function generateModelList(make) {
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+function getProfileImg() {
+  let email = JSON.parse(localStorage.getItem('email'));
+  Xter = email.charAt(0).toUpperCase()
+  const pic = document.createElement('profilePic');
+  pic.innerHTML = ` 
+  <div class="z-10 sticky top-0 -mt-px px-6 py-1 md:px-8 border-t border-b font-medium uppercase text-secondary bg-gray-50 dark:bg-gray-900">
+  ${Xter}
+</div>
+  
+  `
+}
+
+
 
 brandsList.onchange = function () {
   var selected = brandsList.options[brandsList.selectedIndex].value;
@@ -1963,6 +2000,7 @@ newVehicleForm.onsubmit = function () {
   let detailerEmail = '';
   let package = '';
   let service = '';
+  let cost = '';
 
   let vehicle = {
     id: id, type: type, brand: brand, model: model, color: color, plate: plate,
@@ -1973,6 +2011,7 @@ newVehicleForm.onsubmit = function () {
     detailerCell: detailerCell,
     detailerEmail: detailerEmail,
     package: package,
+    cost: cost,
     service: service
   };
   saveVehicle(vehicle);
@@ -2012,34 +2051,33 @@ function displayMyCarList(list) {
       const item = document.createElement('li');
       item.innerHTML = ` 
       <div
-      class="h-48   bg-white  group block rounded-lg p-4 border border-gray-200">
-      <div class="flex flex-col justify-center">
-        <div class="flex flex-auto justify-center">
-          <img src="./images/${car.type}.png" alt="" class="w-28" />
-        </div>
+      class="h-64  bg-white  group block rounded-lg p-4 border border-gray-200">
+
+
+      
+      <div class="flex flex-col justify-center">      
         <div class="flex-auto pb-6 px-6">
           <div class="flex flex-col">
-            <h1 class="flex  justify-center text-xl font-semibold group-hover:text-white2">
-            ${capitalizeFirstLetter(car.brand)} ${capitalizeFirstLetter(car.model)}
-            </h1>
-            <div
-              class="w-full flex justify-center  text-sm font-medium   text-gray-500 mt-2">
-              ${capitalizeFirstLetter(car.color)} - ${capitalizeFirstLetter(car.plate)}
+            <div class="flex  justify-center text-sm font-semibold">
+            ${capitalizeFirstLetter(car.brand)} 
             </div>
+            <div class="flex  justify-center text-sm font-medium">
+           ${capitalizeFirstLetter(car.model)}
+            </div>
+            <div class="flex flex-auto justify-center my-3">
+            <img src="./images/${car.type}.png" class="w-28" />
           </div>
-
-          <div class="flex space-x-3 justify-center mt-4 text-sm font-medium">
-
-            <button class="flex-none flex items-center justify-center w-9 h-9 rounded-full text-blue-500  hover:bg-blue-500  hover:text-white  bg-blue-50"
-              type="button">
-              <i class="fas fa-pencil"></i>
-            </button>
-
+            <div  class="w-full flex justify-center  text-sm font-medium   text-gray-500 my-3">
+              ${capitalizeFirstLetter(car.color)} - ${capitalizeFirstLetter(car.plate)}             
+            </div>            
+          </div>
+    
+          <div class="flex relative space-x-3 justify-center mt-4 text-sm font-medium">        
             <button onclick="removeVehicle(${car.id})"
-              class="flex-none flex items-center justify-center w-9 h-9 rounded-full text-red-500 border bg-red-50 hover:bg-red-500  hover:text-white "
+              class="absolute top-0 flex-none flex items-center justify-center w-9 h-9 rounded-full text-red-500 border bg-red-50 hover:bg-red-500  hover:text-white "
               type="button">
               <i class="fas fa-trash"></i>
-            </button>
+            </button>            
           </div>
         </div>
       </div>

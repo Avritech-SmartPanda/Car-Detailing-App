@@ -28,7 +28,6 @@
 
   <div class="flex flex-col flex-auto min-w-0">
     <!-- Header -->
-
     <nav class="bg-gray-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
@@ -40,16 +39,13 @@
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
 
-                <a href="landing.html"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                aria-current="page">My vehicles</a>
+                <a href="my-vehicles.html"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  aria-current="page">My vehicles</a>
 
-              <a href="book.html"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-               >Make appointment</a>
+                <a href="bookings.html"
+                  class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Make appointment</a>
 
-                <a href="bookings.html" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-              
-                aria-current="page">Appointments</a>
               </div>
             </div>
           </div>
@@ -196,72 +192,172 @@
 
     <!-- Main -->
     <div class="flex-auto mt-4 sm:mt-6">
-      <div class="w-full max-w-screen-sm mx-auto">
+      <div class="w-full max-w-screen-lg mx-auto ">
         <div
-        class="sm:col-span-3 lg:col-span-4 flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden">
+        class="sm:col-span-3 lg:col-span-4 flex flex-col flex-auto p-6 bg-gray-50  shadow rounded-2xl overflow-hidden">
         <div class="flex flex-col flex-auto">
+          <form class="" id="bookingForm" name="bookingForm" >
 
-
-          <div class="sm:col-span-3 lg:col-span-2 grid grid-cols-1 gap-y-6">
-            <div class="sm:col-span-2 flex flex-col flex-auto">
-              <div class="flex flex-col flex-auto p-4">
-                <div class="flex flex-col items-start">
-                  <div class="text-xl font-medium">Toyota Yaris</div>
-                  <div class="mt-1 text-sm font-semibold text-gray-400 leading-5">
-                    White -Vy677
-                  </div>
-                </div>
-
-                
-                <div class="text-lg font-medium mt-8">Information</div>
-                <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Package:</div>
-                    <div>item.createdBy</div>
-                  </div>
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Service:</div>
-                    <div>item.createdAt</div>
-                  </div>
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Appointment date:</div>
-                    <div>item.modifiedAt</div>
-                  </div>
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Appointment time:</div>
-                    <div>item.size</div>
-                  </div>                 
-                </div>
-
-                
-                <div class="flex items-center justify-between mt-24">
-                  <div class="text-lg font-medium">Detailer</div>
-                  <button mat-icon-button>
-                    <mat-icon class="icon-size-5" svgIcon="'heroicons_solid:pencil'"></mat-icon>
-                  </button>
-                </div>
-                <div class="flex flex-col mt-4 border-t border-b divide-y font-medium">
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Name:</div>
-                    <div>item.createdBy</div>
-                  </div>
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Address:</div>
-                    <div>item.createdAt</div>
-                  </div>
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Phone:</div>
-                    <div>item.modifiedAt</div>
-                  </div>
-                  <div class="flex items-center justify-between py-3">
-                    <div class="text-gray-400">Cell:</div>
-                    <div>item.size</div>
-                  </div>
-                 
-                </div>                
+            <!-- My vehicles list -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700">Select Vehicle</label>
+              <div class="flex flex-row overflow-x-auto p-4">
+                <div class="flex flex-row gap-4" id="myVehicles"> </div>
               </div>
-            </div>            
-          </div> 
+            </div>
+
+            <!-- Packages list -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700">Select Package</label>
+              <div class="flex flex-row overflow-x-auto overflow-y-hidden p-4">
+                <div class="flex flex-row gap-4" id="packages"> </div>
+              </div>
+            </div>               
+
+            <!-- My detailers list -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700">Select Detailer</label>
+              <div class="flex flex-row overflow-x-auto  overflow-y-hidden  p-4">
+                <div class="flex flex-row gap-4" id="detailers"> </div>
+              </div>
+            </div>
+
+
+              <!-- Date -->
+              <div class="mb-6">
+                <label for="date" class="text-sm font-medium text-gray-900 block mb-2 dark:text-gray-300">Appointment
+                  Date</label>
+                <div class="relative" id="date">
+                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <input datepicker="" type="text" id="appointment"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500  focus:border-blue-500 block w-full pl-10 p-2.5 datepicker-input"
+                    placeholder="Select date">
+                </div>
+              </div>
+
+              <!-- Time -->
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Select Time</label>
+                <fieldset>
+
+
+                  <div class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+                    <div class="relative">
+                      <input type="radio" name="time" value="7:45 AM - 8:30 AM" class="sr-only peer"
+                        id="7:45 AM - 8:30 AM">
+                      <label for="7:45 AM - 8:30 AM"
+                        class="peer-checked:ring-4 peer-checked:bg-blue-500 peer-checked:text-white  peer-checked:ring-blue-500    group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        7:45 AM - 8:30 AM
+                        <div aria-hidden="true" class="absolute -inset-px rounded-md pointer-events-none"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="8:30 AM -  9:45 AM" class="sr-only peer"
+                        id="8:30 AM -  9:45 AM">
+                      <label for="8:30 AM -  9:45 AM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        8:30 AM - 9:45 AM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="9:45 AM - 10:30 AM" class="sr-only peer"
+                        id="9:45 AM - 10:30 AM">
+                      <label for="9:45 AM - 10:30 AM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        9:45 AM - 10:30 AM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="10:30 AM -  11:45 AM" class="sr-only peer"
+                        id="10:30 AM -  11:45 AM">
+                      <label for="10:30 AM -  11:45 AM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        10:30 AM - 11:45 AM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="11:45 AM - 12:30 PM" class="sr-only peer"
+                        id="11:45 AM - 12:30 PM">
+                      <label for="11:45 AM - 12:30 PM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        11:45 AM - 12:30 PM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="12:30 PM -  1:45 PM" class="sr-only peer"
+                        id="12:30 PM -  1:45 PM">
+                      <label for="12:30 PM -  1:45 PM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        12:30 PM - 1:45 PM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="1:45 PM - 2:30 PM" class="sr-only peer"
+                        id="1:45 PM - 2:30 PM">
+                      <label for="1:45 PM - 2:30 PM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        1:45 PM - 2:30 PM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+
+
+                    <div class="relative">
+                      <input type="radio" name="time" value="2:30 PM - 3:45 PM" class="sr-only peer"
+                        id="2:30 PM - 3:45 PM">
+                      <label for="2:30 PM - 3:45 PM"
+                        class="peer-checked:bg-blue-500 peer-checked:text-white peer-checked:ring-4  peer-checked:ring-blue-500     group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-blue-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
+                        2:30 PM - 3:45 PM
+                        <div class="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true"></div>
+                      </label>
+                    </div>
+
+                  </div>
+                </fieldset>
+              </div>
+            <div
+              class="flex grid grid-cols-2 gap-x-6 items-center py-6 border-t border-gray-200 rounded-b dark:border-gray-600">
+
+              <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 
+            text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10" onclick="goTo()"> Cancel</button>
+
+
+              <button  type="submit" class="text-white bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:ring-blue-800 font-medium rounded-lg 
+            text-sm px-5 py-2.5 text-center ">Book appointment</button>
+
+            </div>
+          </form>
         </div>
       </div>
       </div>
